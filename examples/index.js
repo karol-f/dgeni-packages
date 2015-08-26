@@ -6,7 +6,7 @@ module.exports = new Package('examples', ['jsdoc'])
 
 .processor(require('./processors/examples-parse'))
 .processor(require('./processors/examples-generate'))
-.processor(require('./processors/protractor-generate'))
+//.processor(require('./processors/protractor-generate'))
 
 .factory(require('./services/exampleMap'))
 .factory(require('./inline-tag-defs/runnableExample'))
