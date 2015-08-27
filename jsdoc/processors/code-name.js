@@ -27,6 +27,8 @@ module.exports = function codeNameProcessor(log) {
     switch(node.type) {
       case 'FunctionDeclaration':
         return node.id && node.id.name;
+      case 'ClassDeclaration':
+        return node.id && node.id.name;
       case 'ExpressionStatement':
         return findCodeName(node.expression);
       case 'AssignmentExpression':
@@ -46,6 +48,8 @@ module.exports = function codeNameProcessor(log) {
       case 'ObjectExpression':
         return null;
       case 'ArrayExpression':
+        return null;
+      case 'MethodDefinition':
         return null;
       case 'Literal':
         return node.value;

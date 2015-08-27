@@ -84,7 +84,7 @@ module.exports = new Package('widgetdoc', [require('../jsdoc'), require('../nunj
   });
 
   computeIdsProcessor.idTemplates.push({
-    docTypes: ['class', 'service', 'directive', 'input', 'object', 'function', 'filter', 'type' ],
+    docTypes: ['class', 'service', 'directive', 'input', 'object', 'function', 'filter', 'type', 'helper' ],
     idTemplate: 'module:${module}.${docType}:${name}',
     getAliases: getAliases
   });
@@ -94,7 +94,7 @@ module.exports = new Package('widgetdoc', [require('../jsdoc'), require('../nunj
 
 .config(function(computePathsProcessor, createDocMessage) {
   computePathsProcessor.pathTemplates.push({
-    docTypes: ['class', 'service', 'directive', 'input', 'object', 'function', 'filter', 'type' ],
+    docTypes: ['class', 'service', 'directive', 'input', 'object', 'function', 'filter', 'type', 'helper' ],
     pathTemplate: '${area}/${module}/${docType}/${name}',
     outputPathTemplate: 'partials/${area}/${module}/${docType}/${name}.html'
   });

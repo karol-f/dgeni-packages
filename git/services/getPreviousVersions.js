@@ -11,12 +11,16 @@ var semver = require('semver');
  */
 module.exports = function getPreviousVersions(decorateVersion, packageInfo) {
   return function() {
+    //TODO workaround
+    return [];
+
     // always use the remote tags as the local clone might
     // not contain all commits when cloned with git clone --depth=...
     // Needed e.g. for Travis
     var repo_url = packageInfo.repository.url;
     var tagResults = shell.exec('git ls-remote --tags ' + repo_url,
                                 {silent: true});
+
     if (tagResults.code === 0) {
       return _(tagResults.output.match(/v[0-9].*[0-9]$/mg))
         .map(function(tag) {

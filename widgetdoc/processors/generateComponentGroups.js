@@ -36,7 +36,7 @@ module.exports = function generateComponentGroupsProcessor(moduleMap) {
             _.forEach(groups, function(group) {
               docs.push(group);
             });
-          });
+          }).value();
       });
     }
   };

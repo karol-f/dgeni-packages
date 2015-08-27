@@ -28,8 +28,10 @@ var satisfiesVersion = function(version) {
  */
 var getCodeName = function(tagName) {
   var gitCatOutput = shell.exec('git cat-file -p ' + tagName, {silent:true}).output;
-  var tagMessage = gitCatOutput.match(/^.*codename.*$/mg)[0];
-  var codeName = tagMessage && tagMessage.match(/codename\((.*)\)/)[1];
+  var gitCatOutputMatch = gitCatOutput.match(/^.*codename.*$/mg);
+  var tagMessage = gitCatOutputMatch ? gitCatOutputMatch[0] : ' ';
+  var tagMessageMatch = tagMessage && tagMessage.match(/codename\((.*)\)/);
+  var codeName = tagMessageMatch ? tagMessageMatch[1] : ' ';
   if (!codeName) {
     throw new Error("Could not extract release code name. The message of tag " + tagName +
       " must match '*codename(some release name)*'");
